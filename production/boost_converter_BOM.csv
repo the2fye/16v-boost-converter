@@ -1,0 +1,21 @@
+Item,Qty,Reference(s),Value,Description,Manufacturer,Mfr Part Number,Footprint / Package,Unit Price (USD),Ext. Price (USD),Notes
+1,2,"C1, C2",10uF 25V,"MLCC, 10 uF, 25 V, X5R",Murata,GRM21BR61E106KA73L,0805 (2012 metric),$0.12,$0.24,Input bulk
+2,1,C3,0.1uF 25V,"MLCC, 0.1 uF, 25 V, X7R",Murata,GRM188R71E104KA01D,0603 (1608 metric),$0.03,$0.03,Input HF bypass
+3,3,"C4, C5, C6",22uF 25V,"MLCC, 22 uF, 25 V, X7R",Murata,GRM32ER71E226KE15L,1210 (3225 metric),$0.40,$1.20,Output caps
+4,1,C7,47pF,"MLCC, 47 pF, 50 V, C0G/NP0",Murata,GRM1885C1H470JA01D,0603 (1608 metric),$0.03,$0.03,FB feedforward
+5,1,C8,0.1uF,"MLCC, 0.1 uF, 50 V, X7R",Murata,GRM188R71H104KA93D,0603 (1608 metric),$0.03,$0.03,COMP
+6,1,C9,0.047uF,"MLCC, 0.047 uF, 50 V, X7R",Murata,GRM188R71H473KA61D,0603 (1608 metric),$0.03,$0.03,Soft-start
+7,1,C10,100pF,"MLCC, 100 pF, 50 V, C0G/NP0",Murata,GRM1885C1H101JA01D,0603 (1608 metric),$0.03,$0.03,COMP
+8,1,D1,B340B-13-F,"Schottky diode, 40 V, 3 A",Diodes Inc.,B340B-13-F,SMB (DO-214AA),$0.55,$0.55,Rectifier
+9,2,"J1, J2",Conn 1x02,"Pin header, 2 pin, 2.54 mm",Wurth,61300211121,1x02 THT 2.54mm,$0.11,$0.22,Input / Output
+10,1,L1,12uH,"Power inductor, 12 uH, shielded",Wurth,744393465120,L-Code SMD,$2.38,$2.38,Verified (Mouser)
+11,1,R1,120k 1%,"Thick film resistor, 120 k, 1%",Yageo,RC0603FR-07120KL,0603 (1608 metric),$0.02,$0.02,FB top
+12,2,"R2, R6",10k 1%,"Thick film resistor, 10 k, 1%",Yageo,RC0603FR-0710KL,0603 (1608 metric),$0.02,$0.04,FB bottom / EN
+13,1,R3,2.55k 1%,"Thick film resistor, 2.55 k, 1%",Yageo,RC0603FR-072K55L,0603 (1608 metric),$0.02,$0.02,COMP
+14,1,R4,95.3k 1%,"Thick film resistor, 95.3 k, 1%",Yageo,RC0603FR-0795K3L,0603 (1608 metric),$0.02,$0.02,FREQ (500 kHz)
+15,1,R5,51.1k 1%,"Thick film resistor, 51.1 k, 1%",Yageo,RC0603FR-0751K1L,0603 (1608 metric),$0.02,$0.02,EN UVLO
+16,1,TP1,TP_SW,"Test point, bare Cu pad",-,(PCB feature),1.0 mm pad,$0.00,$0.00,Switch node probe
+17,1,TP2,TP_GND,"Test point, bare Cu pad",-,(PCB feature),1.0 mm pad,$0.00,$0.00,Ground reference
+18,1,TP3,TP_FB,"Test point, bare Cu pad",-,(PCB feature),1.0 mm pad,$0.00,$0.00,Feedback probe
+19,1,U1,TPS55340PWP,"Boost/SEPIC/flyback regulator, 5 A",Texas Instruments,TPS55340PWP,HTSSOP-14 (PowerPAD),$3.30,$3.30,Verified (DigiKey)
+Totals,24,,,,,,,Total,$8.16,
