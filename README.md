@@ -38,6 +38,30 @@ A compact DC-DC boost converter that takes a 2S2P lithium-ion battery pack (7.2 
 
 **Compensation.** R3, C8, and C10 are starting values from the TI datasheet example. The right-half-plane zero at minimum input puts the crossover limit around 14 kHz, and the final values would come from a measured loop response.
 
+## WEBENCH cross-check
+
+To check my hand calculations, I ran the same specs (7.2 V to 8.4 V in, 16 V at 1 A out) through TI WEBENCH and compared against two TPS55340 designs it generated. WEBENCH picks its own frequency and parts (and used the QFN package), so this is a check on the math, not a copy of my board.
+
+| | My design | WEBENCH design A | WEBENCH design B |
+|---|---|---|---|
+| Feedback divider | 120k / 10k | 120k / 10k | 120k / 10k |
+| Duty cycle | 0.49 to 0.56 | about 0.49 to 0.56 | about 0.49 to 0.56 |
+| Switching frequency | 500 kHz | 549 kHz | 779 kHz |
+| Frequency resistor | 95.3k | 86.6k | 60.4k |
+| Inductor | 12 uH | 10 uH | 6.8 uH |
+| Output caps | 3x 22 uF | 2x 22 uF + 1 uF | 3x 4.7 uF |
+| Compensation (R / C / C) | 2.55k / 0.1 uF / 100 pF | 976 / 150 nF / 2.7 nF | n/a |
+| Efficiency | 90% to 92% (my estimate) | 95% to 96% | 95% to 96% |
+
+What I took from it:
+
+- **The feedback divider and duty cycle match exactly**, so the output setpoint and operating point math checks out.
+- **The frequency equation holds.** Plugging 549 kHz into the datasheet equation gives 86.7k, which rounds to WEBENCH's 86.6k. That's the same equation I used to get 95.3k at 500 kHz.
+- **The inductor difference comes from frequency, not a mistake.** The same sizing equation gives about 9.6 uH at 549 kHz (so 10 uH works) and about 10.5 uH at 500 kHz (so I rounded up to 12 uH).
+- **Frequency barely moved efficiency.** Going from 549 kHz to 779 kHz cut the footprint about 39% with basically the same efficiency curve, which backs up that switching loss is secondary at this power level.
+- **I think WEBENCH's efficiency is optimistic.** The Schottky diode alone drops about 0.5 V at 1 A, which is 0.5 W or about 3% of the 16 W output before counting the switch, inductor, or switching losses. I kept my 90% to 92% estimate.
+- **For compensation**, I kept the datasheet's worked example values, since those come with documented equations. Either set is a starting point to tune on the bench.
+
 ## Schematic
 
 ![Schematic](docs/images/schematic.png)
